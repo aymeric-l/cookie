@@ -1,6 +1,3 @@
-var bouton;
-var affichage;
-var multiplicateur;
 var score = 0;
 var prix = 50;
 var compteur = 1;
