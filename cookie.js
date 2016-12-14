@@ -7,8 +7,10 @@ var total;
 function autoclick(){
 	if(score >=prixauto){
 		setInterval(javabouton, 2000);
-		document.getElementById("total").innerHTML=total;
+		document.getElementById("total").innerHTML="Nombre total de cookies gagnés : "+total;
+		depense=depense+prixauto;
 		score=score-prixauto;
+		document.getElementById("resultat").innerHTML=score;
 		prixauto=prixauto*2;
 		document.getElementById("clickauto").innerHTML="Click automatique,prix :"+prixauto;
 	}
@@ -29,7 +31,7 @@ function incrementer(){
 	if(score>=prix){
 	compteur=compteur+1;
 	depense=depense+prix;
-	document.getElementById("total").innerHTML=total;
+	document.getElementById("total").innerHTML="Nombre total de cookies gagnés : "+total;
 	score=score-prix;
 	prix = prix*2;
 	console.log(compteur);
