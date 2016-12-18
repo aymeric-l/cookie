@@ -4,6 +4,10 @@ var compteur = 1;
 var prixauto = 50;
 var depense = 0;
 var total;
+
+totale = lireCookie('totalCookie');
+document.getElementById("total").innerHTML="Nombre total de cookies gagnés : "+totale;
+
 function autoclick(){
 	if(score >=prixauto){
 		setInterval(javabouton, 2000);
@@ -16,15 +20,18 @@ function autoclick(){
 	}
 }
 
-
+function createCookie(name,value,days) {
+	document.cookie = 'totalCookie='+total+'; expires=Mon, 26 Dec 2016 00:00:00 UTC; path=~/Document/';
+}
 
 function javabouton(){	
 	score=score+compteur;
-	total = score+depense;
+	total = parseInt(totale)+score+depense;
 	console.log(depense);
 	console.log(total);
 	document.getElementById("resultat").innerHTML=score;
 	document.getElementById("total").innerHTML="Nombre total de cookies gagnés : "+total;
+	createCookie();
 }
 
 function incrementer(){
@@ -39,4 +46,15 @@ function incrementer(){
 		document.getElementById("resultat").innerHTML=score;
 	}
 
+}
+
+function lireCookie(name){
+	var nameEQ = name + "=";
+	var ca = document.cookie.split(';');
+	for(var i=0;i < ca.length;i++) {
+		var c = ca[i];
+		while (c.charAt(0)==' ') c = c.substring(1,c.length);
+		if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+	}
+	return 0;
 }
